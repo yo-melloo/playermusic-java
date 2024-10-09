@@ -1,30 +1,40 @@
 package br.com.mello.playermusic.principal;
 
+import br.com.mello.playermusic.modules.MinhasPreferidas;
 import br.com.mello.playermusic.modules.Musica;
 import br.com.mello.playermusic.modules.Podcast;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
         Musica minhaMusica = new Musica();
         Podcast meuPodcast = new Podcast();
 
-        minhaMusica.setTitulo("Deer Dance");
-        minhaMusica.setArtista("System Of A Down");
-        minhaMusica.setAlbum("Toxicity");
-//        minhaMusica.setAno(2001);
-        minhaMusica.setGenero("Nu Metal");
-//        minhaMusica.setDuracaoEmSegundos(225);
-//        minhaMusica.setAvisoParental(true);
+        System.out.println("Digite o nome da música:");
+        minhaMusica.setTitulo(entrada.nextLine());
 
-        //minhaMusica.tocar();
-        //minhaMusica.repetir();
+        System.out.println("Digite o nome do artista");
+        minhaMusica.setArtista(entrada.nextLine());
 
-        meuPodcast.setTitulo("BolhaDev");
-        meuPodcast.setHost("Gustavo Mello");
-        meuPodcast.setDescricao("Olá Mundo");
+        System.out.println("Digite o nome do álbum");
+        minhaMusica.setAlbum(entrada.nextLine());
+
+        System.out.println("Digite o gênero de " + minhaMusica.getTitulo());
+        minhaMusica.setGenero(entrada.nextLine());
+
+        System.out.println("Digite o nome do Podcast:");
+        meuPodcast.setTitulo(entrada.nextLine());
+
+        System.out.println("Digite o nome do apresentador (host)");
+        meuPodcast.setHost(entrada.nextLine());
+
+        System.out.println("Qual a descrição do podcast?");
+        meuPodcast.setDescricao(entrada.nextLine());
 
 
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 3500; i++) {
             minhaMusica.reproduzir();
         }
 
@@ -36,15 +46,16 @@ public class Main {
             meuPodcast.reproduzir();
         }
 
-        for (int i = 0; i < 25; i++) {
+        for (int i = 0; i < 40; i++) {
             meuPodcast.curtir();
         }
 
-        System.out.println(minhaMusica.getTotalDeReproducoes());
-        System.out.println(minhaMusica.getTotalDeCurtidas());
 
-        System.out.println(meuPodcast.getTotalDeReproducoes());
-        System.out.println(meuPodcast.getTotalDeCurtidas());
+        MinhasPreferidas preferidas = new MinhasPreferidas();
+
+        preferidas.inclui(minhaMusica);
+        preferidas.inclui(meuPodcast);
+
 
     }
 }

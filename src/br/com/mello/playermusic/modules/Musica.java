@@ -28,4 +28,13 @@ public class Musica extends Titulo {
     public void setGenero(String genero) {
         this.genero = genero;
     }
+
+    @Override
+    public int getClassificacao() {
+        if(this.getTotalDeReproducoes() > 2000){
+            return 5;
+        } else {
+            return 2;
+        }
+    }
 }
